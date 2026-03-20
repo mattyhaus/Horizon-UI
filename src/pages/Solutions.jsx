@@ -71,12 +71,12 @@ export default function Solutions() {
     }, []);
 
     return (
-        <div ref={containerRef} className="w-full bg-[#050508] min-h-screen pt-40 pb-40 overflow-x-hidden text-white font-sans">
+        <div ref={containerRef} className="w-full bg-[#050508] min-h-screen pt-24 lg:pt-40 pb-24 lg:pb-40 overflow-x-hidden text-white font-sans">
             
             {/* Cinematic Header */}
-            <div className="max-w-5xl mx-auto px-6 md:px-12 text-center mb-40 relative z-10 flex flex-col gap-8 items-center">
+            <div className="max-w-5xl mx-auto px-6 md:px-12 text-center mb-20 lg:mb-40 relative z-10 flex flex-col gap-8 items-center">
 
-                <h1 className="font-serif italic text-6xl md:text-8xl lg:text-[7rem] leading-none mb-4 tracking-tighter flex flex-wrap justify-center gap-x-3 gap-y-2">
+                <h1 className="font-serif italic text-5xl md:text-7xl lg:text-8xl lg:text-[7rem] leading-none mb-4 tracking-tighter flex flex-wrap justify-center gap-x-3 gap-y-2">
                     {"See Automation in ".split(" ").map((word, i) => (
                         <span key={i} className="header-word inline-block text-white/90 drop-shadow-lg">{word}</span>
                     ))}
@@ -92,7 +92,7 @@ export default function Solutions() {
 
             <div className="max-w-7xl mx-auto px-6 md:px-12">
                 {/* Before vs After Section */}
-                <div className="mb-40 space-y-32">
+                <div className="mb-20 lg:mb-40 space-y-32">
                     {/* Use Case 1 */}
                     <div className="card-fall-container">
                         <h2 className="text-3xl font-sans font-black mb-12 text-center tracking-tighter text-white/80">I. Lead Qualification Pipeline</h2>
@@ -186,7 +186,7 @@ export default function Solutions() {
                 </div>
 
                 {/* The AI Employee Section */}
-                <section className="mb-40 max-w-5xl mx-auto text-center border-t border-white/5 pt-32">
+                <section className="mb-20 lg:mb-40 max-w-5xl mx-auto text-center border-t border-white/5 pt-32">
                     <h2 className="font-sans text-5xl md:text-7xl font-black tracking-tighter mb-6 text-transparent bg-clip-text bg-gradient-to-br from-white to-white/40 pb-2">The AI Employee</h2>
                     <p className="text-xl text-text/50 leading-relaxed font-light mb-20 max-w-2xl mx-auto">
                         We don't just build scripts. We build tireless, entirely digital team members that execute standard operating procedures perfectly.
@@ -225,7 +225,7 @@ export default function Solutions() {
                 </section>
 
                 {/* Automation Pipeline Section */}
-                <div className="mb-40 pipeline-container relative z-10 bg-[#07070a] rounded-[3rem] p-12 md:p-20 border border-white/5 overflow-hidden text-center shadow-xl">
+                <div className="mb-20 lg:mb-40 pipeline-container relative z-10 bg-[#07070a] rounded-[3rem] p-12 md:p-20 border border-white/5 overflow-hidden text-center shadow-xl">
                     <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2670&auto=format&fit=crop')] opacity-[0.03] bg-cover mix-blend-screen pointer-events-none"></div>
                     <h2 className="font-sans text-5xl font-black tracking-tighter mb-6 text-white relative z-20">Pipeline Architecture</h2>
                     <p className="text-text/50 font-light text-xl mb-24 relative z-20 max-w-2xl mx-auto">Zero-touch data flow from initial external trigger to final analytical payload.</p>
@@ -255,30 +255,30 @@ export default function Solutions() {
                 </div>
 
                 {/* Metrics */}
-                <div className="mb-40 pt-20">
+                <div className="mb-20 lg:mb-40 pt-20">
                     <h2 className="font-sans text-4xl md:text-5xl font-black tracking-tighter mb-24 text-center text-white/50">Return On Investment</h2>
 
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                         <div className="text-center group border-r border-white/5 last:border-0 border-dashed">
-                            <div className="text-6xl md:text-8xl font-black font-sans mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20 inline-block drop-shadow-xl">
+                            <div className="text-5xl md:text-7xl lg:text-8xl font-black font-sans mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20 inline-block drop-shadow-xl">
                                 <span className="metric-number" data-target="20" data-suffix="+">0</span>
                             </div>
                             <p className="font-mono text-[10px] text-text/50 tracking-widest uppercase max-w-[120px] mx-auto">Hours saved weekly</p>
                         </div>
                         <div className="text-center group border-r border-white/5 last:border-0 border-dashed">
-                            <div className="text-6xl md:text-8xl font-black font-sans mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20 inline-block drop-shadow-xl">
+                            <div className="text-5xl md:text-7xl lg:text-8xl font-black font-sans mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20 inline-block drop-shadow-xl">
                                 <span className="metric-number" data-target="80" data-suffix="%">0</span>
                             </div>
                             <p className="font-mono text-[10px] text-text/50 tracking-widest uppercase max-w-[120px] mx-auto">Faster resolution</p>
                         </div>
                         <div className="text-center group border-r border-white/5 last:border-0 border-dashed">
-                            <div className="text-6xl md:text-8xl font-black font-sans mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20 inline-block drop-shadow-xl">
+                            <div className="text-5xl md:text-7xl lg:text-8xl font-black font-sans mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20 inline-block drop-shadow-xl">
                                 <span className="metric-number" data-target="3" data-suffix="x">0</span>
                             </div>
                             <p className="font-mono text-[10px] text-text/50 tracking-widest uppercase max-w-[120px] mx-auto">Pipeline Growth</p>
                         </div>
                         <div className="text-center group border-r border-white/5 last:border-0 border-dashed hidden md:block">
-                            <div className="text-6xl md:text-8xl font-black font-sans mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20 inline-block drop-shadow-xl">
+                            <div className="text-5xl md:text-7xl lg:text-8xl font-black font-sans mb-6 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20 inline-block drop-shadow-xl">
                                 <span className="metric-number" data-target="99" data-suffix=".9%">0</span>
                             </div>
                             <p className="font-mono text-[10px] text-text/50 tracking-widest uppercase max-w-[120px] mx-auto">System Uptime</p>

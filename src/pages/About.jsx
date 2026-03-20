@@ -63,12 +63,12 @@ export default function About() {
     const manifestoText = "The tools that help Fortune 500 companies run hyper-lean are finally accessible to everyone. But somebody still needs to architect, configure, and maintain them.";
 
     return (
-        <div ref={containerRef} className="w-full bg-[#030305] min-h-screen pt-40 pb-40 overflow-hidden font-sans text-white">
+        <div ref={containerRef} className="w-full bg-[#030305] min-h-screen pt-24 lg:pt-40 pb-24 lg:pb-40 overflow-hidden font-sans text-white">
             
             {/* Cinematic Header Layer */}
-            <div className="max-w-4xl mx-auto px-6 md:px-12 text-center mb-40 relative z-20 flex flex-col items-center">
+            <div className="max-w-4xl mx-auto px-6 md:px-12 text-center mb-20 lg:mb-40 relative z-20 flex flex-col items-center">
 
-                <h1 className="font-serif italic text-6xl md:text-8xl lg:text-[7.5rem] leading-[1.1] mb-8 tracking-tighter drop-shadow-2xl flex flex-wrap justify-center gap-x-3 gap-y-2">
+                <h1 className="font-serif italic text-5xl md:text-7xl lg:text-8xl lg:text-[7.5rem] leading-[1.1] mb-8 tracking-tighter drop-shadow-2xl flex flex-wrap justify-center gap-x-3 gap-y-2">
                     {"Rebuilding the".split(" ").map((word, i) => (
                         <span key={i} className="hero-word inline-block text-white/90 drop-shadow-lg">{word}</span>
                     ))}
@@ -83,7 +83,7 @@ export default function About() {
             </div>
 
             {/* The Manifesto Section */}
-            <section ref={storyRef} className="max-w-5xl mx-auto px-6 md:px-12 mb-40 relative z-20">
+            <section ref={storyRef} className="max-w-5xl mx-auto px-6 md:px-12 mb-20 lg:mb-40 relative z-20">
                 <h2 className="font-mono text-xs uppercase tracking-widest text-white/30 mb-8 block text-center">The Manifesto</h2>
                 <div className="text-center max-w-4xl mx-auto">
                     <p className="font-sans font-light text-3xl md:text-5xl lg:text-5xl leading-[1.4] tracking-tight flex flex-wrap justify-center gap-x-3 gap-y-2">
@@ -103,9 +103,9 @@ export default function About() {
             </section>
 
             {/* What Makes Us Different */}
-            <section className="px-6 md:px-12 max-w-6xl mx-auto mb-40 relative z-20">
+            <section className="px-6 md:px-12 max-w-6xl mx-auto mb-20 lg:mb-40 relative z-20">
                 <div className="text-center mb-24">
-                    <h2 className="font-sans text-5xl md:text-6xl font-black tracking-tighter text-white">Operational Ethos</h2>
+                    <h2 className="font-sans text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white">Operational Ethos</h2>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                     {differentiators.map((diff, i) => (
@@ -122,7 +122,7 @@ export default function About() {
             </section>
 
             {/* Core Tech Stack */}
-            <section className="px-6 md:px-12 max-w-7xl mx-auto mb-40">
+            <section className="px-6 md:px-12 max-w-7xl mx-auto mb-20 lg:mb-40">
                 <h2 className="font-sans text-xs font-mono uppercase tracking-widest text-center text-white/30 mb-16">Infrastructure Stack</h2>
                 <div className="flex flex-col gap-6">
                     {stack.map((item, i) => (

@@ -43,17 +43,17 @@ export default function Contact() {
     }, []);
 
     return (
-        <div ref={containerRef} className="w-full bg-[#030305] min-h-screen pt-40 pb-40 px-6 md:px-12 font-sans text-white overflow-hidden relative">
+        <div ref={containerRef} className="w-full bg-[#030305] min-h-screen pt-24 lg:pt-40 pb-24 lg:pb-40 px-6 md:px-12 font-sans text-white overflow-hidden relative">
             
             {/* Background Texture */}
             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542044896582-841f3e79bc20?q=80&w=2670&auto=format&fit=crop')] bg-cover opacity-[0.02] mix-blend-overlay pointer-events-none"></div>
 
-            <div className="max-w-7xl mx-auto relative z-10 flex flex-col lg:flex-row gap-16 lg:gap-24">
+            <div className="max-w-7xl mx-auto relative z-10 flex flex-col lg:flex-row gap-16 lg:gap-12 lg:gap-24">
 
                 {/* Left Column - Typography & Info */}
                 <div className="w-full lg:w-[45%] flex flex-col justify-center">
 
-                    <h1 className="font-serif italic text-6xl md:text-8xl tracking-tighter mb-8 leading-[1.1] flex flex-col">
+                    <h1 className="font-serif italic text-5xl md:text-7xl lg:text-8xl tracking-tighter mb-8 leading-[1.1] flex flex-col">
                         <span className="hero-word text-white/90">Let's Talk</span>
                         <span className="hero-word font-black text-transparent bg-clip-text bg-gradient-to-r from-ig-magenta to-fb-blue not-italic drop-shadow-xl self-start pb-2">Automation.</span>
                     </h1>

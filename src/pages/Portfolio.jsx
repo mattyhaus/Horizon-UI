@@ -93,12 +93,12 @@ export default function Portfolio() {
     }, [activeFilter]); // Re-run when filter changes to bind new elements
 
     return (
-        <div ref={containerRef} className="w-full bg-[#050508] min-h-screen pt-40 pb-40 px-6 md:px-12 overflow-hidden font-sans text-white">
+        <div ref={containerRef} className="w-full bg-[#050508] min-h-screen pt-24 lg:pt-40 pb-24 lg:pb-40 px-6 md:px-12 overflow-hidden font-sans text-white">
             
             {/* Cinematic Header */}
             <div className="max-w-6xl mx-auto text-center mb-32 relative z-20 flex flex-col items-center">
 
-                <h1 className="font-serif italic text-6xl md:text-8xl lg:text-[8rem] tracking-tighter mb-8 leading-none flex flex-wrap justify-center gap-x-4">
+                <h1 className="font-serif italic text-5xl md:text-7xl lg:text-8xl lg:text-[8rem] tracking-tighter mb-8 leading-none flex flex-wrap justify-center gap-x-4">
                     {"Architectural ".split(" ").map((word, i) => (
                         <span key={i} className="hero-word inline-block drop-shadow-lg">{word}</span>
                     ))}
@@ -129,11 +129,11 @@ export default function Portfolio() {
             </div>
 
             {/* Massive Gallery Layout */}
-            <div className="max-w-7xl mx-auto flex flex-col gap-32 mb-40">
+            <div className="max-w-7xl mx-auto flex flex-col gap-16 lg:gap-32 mb-20 lg:mb-40">
                 {filteredProjects.map((project, idx) => {
                     const isEven = idx % 2 === 0;
                     return (
-                        <div key={project.id} className={`gallery-panel flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-24 items-center group`}>
+                        <div key={project.id} className={`gallery-panel flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-12 lg:gap-24 items-center group`}>
                             
                             {/* Cinematic Image Frame */}
                             <div className="w-full lg:w-[60%] h-[50dvh] lg:h-[70dvh] relative overflow-hidden rounded-[3rem] border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.8)]">

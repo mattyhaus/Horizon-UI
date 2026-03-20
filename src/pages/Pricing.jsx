@@ -75,12 +75,12 @@ export default function Pricing() {
     }, []);
 
     return (
-        <div ref={containerRef} className="w-full bg-[#050508] min-h-screen pt-40 pb-40 overflow-hidden font-sans text-white">
+        <div ref={containerRef} className="w-full bg-[#050508] min-h-screen pt-24 lg:pt-40 pb-24 lg:pb-40 overflow-hidden font-sans text-white">
             
             {/* Cinematic Header Layer */}
             <div className="max-w-4xl mx-auto px-6 md:px-12 text-center mb-10 relative z-10 flex flex-col items-center">
 
-                <h1 className="hero-slide font-serif italic text-6xl md:text-8xl lg:text-[7.5rem] leading-none mb-8 tracking-tighter drop-shadow-2xl flex flex-wrap justify-center gap-x-4 gap-y-2">
+                <h1 className="hero-slide font-serif italic text-5xl md:text-7xl lg:text-8xl lg:text-[7.5rem] leading-none mb-8 tracking-tighter drop-shadow-2xl flex flex-wrap justify-center gap-x-4 gap-y-2">
                     <span className="text-white/90">Scope</span>
                     <span className="font-black text-amber-500 tracking-tight relative drop-shadow-[0_0_30px_rgba(245,158,11,0.4)]">
                         <span className="relative z-10 not-italic">Dynamically.</span>
@@ -93,7 +93,7 @@ export default function Pricing() {
             </div>
 
             {/* The Scoper Widget Area */}
-            <section className="hero-slide relative z-40 w-full mb-40">
+            <section className="hero-slide relative z-40 w-full mb-20 lg:mb-40">
                 <div className="max-w-7xl mx-auto w-full px-4 md:px-12">
                     <div className="bg-white/[0.01] backdrop-blur-3xl border border-white/5 shadow-2xl rounded-[3rem] p-6 md:p-12 relative overflow-hidden group">
                         <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>

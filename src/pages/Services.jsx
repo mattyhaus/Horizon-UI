@@ -97,12 +97,12 @@ export default function Services() {
     ];
 
     return (
-        <div ref={containerRef} className="w-full bg-[#0a0a0f] min-h-screen pt-40 pb-40 overflow-hidden font-sans text-white">
+        <div ref={containerRef} className="w-full bg-[#0a0a0f] min-h-screen pt-24 lg:pt-40 pb-24 lg:pb-40 overflow-hidden font-sans text-white">
             
             {/* Cinematic Header */}
-            <div className="max-w-5xl mx-auto px-6 md:px-12 text-center mb-40 relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+            <div className="max-w-5xl mx-auto px-6 md:px-12 text-center mb-20 lg:mb-40 relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-1000">
 
-                <h1 className="font-serif italic text-6xl md:text-8xl lg:text-[7.5rem] leading-none mb-8 tracking-tighter drop-shadow-2xl">
+                <h1 className="font-serif italic text-5xl md:text-7xl lg:text-8xl lg:text-[7.5rem] leading-none mb-8 tracking-tighter drop-shadow-2xl">
                     Engineered to <span className="font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 not-italic">Scale.</span>
                 </h1>
                 <p className="text-xl md:text-2xl text-text/50 font-light max-w-2xl mx-auto leading-relaxed">
@@ -111,7 +111,7 @@ export default function Services() {
             </div>
 
             {/* Alternating Services Rows using Home.jsx layout logic */}
-            <div className="flex flex-col gap-24 lg:gap-32 w-full max-w-7xl mx-auto px-6 md:px-12 mb-40">
+            <div className="flex flex-col gap-12 lg:gap-24 lg:gap-16 lg:gap-32 w-full max-w-7xl mx-auto px-6 md:px-12 mb-20 lg:mb-40">
                 {services.map((svc, index) => {
                     const isEven = index % 2 === 0;
                     return (

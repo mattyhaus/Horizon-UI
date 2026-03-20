@@ -313,12 +313,12 @@ export default function Home() {
 
             {/* 2. FEATURES - "Interactive Functional Artifacts" */}
             <section ref={featuresRef} className="py-32 px-6 md:px-12 max-w-7xl mx-auto relative z-20 bg-background">
-                <div className="flex flex-col gap-12 lg:gap-24 w-full">
+                <div className="flex flex-col gap-12 lg:gap-12 lg:gap-24 w-full">
                     {/* Row 1 */}
                     <div className="feature-row-animate grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
                         {/* Headers 1: GTM & Venture Exploration */}
                         <div className="flex flex-col justify-center h-full min-h-[350px]">
-                            <h3 className="font-sans text-5xl md:text-6xl font-black mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white to-fb-blue">GTM & Venture Exploration</h3>
+                            <h3 className="font-sans text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white to-fb-blue">GTM & Venture Exploration</h3>
                             <p className="text-text/70 text-lg md:text-2xl leading-relaxed">We analyze markets, map out go-to-market strategies, and build comprehensive lead databases to validate and launch your new ventures.</p>
                         </div>
                         {/* Interactive Lead Database Widget */}
@@ -335,7 +335,7 @@ export default function Home() {
                         </div>
                         {/* Headers 2: Content & Marketing */}
                         <div className="flex flex-col justify-center h-full min-h-[350px] order-1 lg:order-2">
-                            <h3 className="font-sans text-5xl md:text-6xl font-black mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white to-ig-magenta">Content & Marketing</h3>
+                            <h3 className="font-sans text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white to-ig-magenta">Content & Marketing</h3>
                             <p className="text-text/70 text-lg md:text-2xl leading-relaxed">From automated content creation engines to targeted marketing workflows, we build the systems that put your brand in front of the right eyes.</p>
                         </div>
                     </div>
@@ -344,7 +344,7 @@ export default function Home() {
                     <div className="feature-row-animate grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
                         {/* Headers 3: Tech & Internal Tools */}
                         <div className="flex flex-col justify-center h-full min-h-[350px]">
-                            <h3 className="font-sans text-5xl md:text-6xl font-black mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white to-wa-green">Tech & Internal Tools</h3>
+                            <h3 className="font-sans text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white to-wa-green">Tech & Internal Tools</h3>
                             <p className="text-text/70 text-lg md:text-2xl leading-relaxed">We overhaul your technology stack, design bespoke CRMs, and develop internal business tools that perfectly align with your operations.</p>
                         </div>
                         {/* Internal Tools Columns */}
@@ -356,7 +356,7 @@ export default function Home() {
             </section>
 
             {/* 3. PROJECT SCOPING - "The Interactive Estimate Engine" */}
-            <section ref={philosophyRef} className="relative pt-40 pb-32 w-full bg-[#050508] overflow-hidden">
+            <section ref={philosophyRef} className="relative pt-24 lg:pt-40 pb-32 w-full bg-[#050508] overflow-hidden">
                 {/* Parallax organic texture */}
                 <div className="absolute inset-0 opacity-[0.05] bg-[url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-fixed"></div>
 
