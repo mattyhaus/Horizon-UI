@@ -271,7 +271,7 @@ export default function Home() {
                     >
                         <video
                             ref={heroVideoRef}
-                            src="/hero-bg.mp4#t=2"
+                            src="/hero-hq.mp4#t=2"
                             autoPlay
                             muted
                             playsInline
