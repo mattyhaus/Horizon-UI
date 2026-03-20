@@ -1,171 +1,168 @@
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Bot, GitBranch, LayoutPanelLeft, LineChart, Zap, Search, Box, CheckCircle2, ArrowRight } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Bot, GitBranch, LayoutPanelLeft, LineChart, Play, Maximize2 } from 'lucide-react';
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Tailwind purge safelist proxy via object mapping
+const colorMap = {
+    'fb-blue': { to: 'to-fb-blue', text: 'text-fb-blue', bg: 'bg-fb-blue', border: 'border-fb-blue', hoverBorder: 'hover:border-fb-blue/30' },
+    'tt-cyan': { to: 'to-tt-cyan', text: 'text-tt-cyan', bg: 'bg-tt-cyan', border: 'border-tt-cyan', hoverBorder: 'hover:border-tt-cyan/30' },
+    'ig-magenta': { to: 'to-ig-magenta', text: 'text-ig-magenta', bg: 'bg-ig-magenta', border: 'border-ig-magenta', hoverBorder: 'hover:border-ig-magenta/30' },
+    'wa-green': { to: 'to-wa-green', text: 'text-wa-green', bg: 'bg-wa-green', border: 'border-wa-green', hoverBorder: 'hover:border-wa-green/30' }
+};
+
+// Placeholder Component for future videos/widgets
+const MediaPlaceholder = ({ colorKey }) => {
+    const cmap = colorMap[colorKey];
+
+    return (
+        <div className={`w-full h-full min-h-[400px] rounded-[2rem] bg-black/40 backdrop-blur-md border border-white/5 flex flex-col items-center justify-center relative overflow-hidden group ${cmap.hoverBorder} transition-colors duration-700 shadow-[0_0_30px_rgba(255,255,255,0.01)]`}>
+            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 ${cmap.bg} opacity-5 rounded-full blur-[60px] group-hover:opacity-20 transition-opacity duration-1000`}></div>
+            <Play size={32} className={`${cmap.text} opacity-40 mb-4 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110 drop-shadow-lg`} />
+            <span className="font-mono text-[10px] tracking-widest uppercase text-white/30 group-hover:text-white/80 transition-colors">Awaiting Media Payload</span>
+            <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <Maximize2 size={16} className={`${cmap.text} opacity-50`} />
+            </div>
+            
+            {/* Corner wireframe accents */}
+            <div className={`absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-white/10 group-hover:${cmap.border} group-hover:opacity-50 transition-colors`}></div>
+            <div className={`absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-white/10 group-hover:${cmap.border} group-hover:opacity-50 transition-colors`}></div>
+        </div>
+    );
+};
 
 export default function Services() {
+    const containerRef = useRef(null);
+
+    useEffect(() => {
+        let ctx = gsap.context(() => {
+            // Stacking Cards Fly-In Logic (Copied natively from Home.jsx)
+            const featureRows = gsap.utils.toArray(".feature-row-animate");
+            featureRows.forEach((row, i) => {
+                const fromRight = (i % 2 === 1); // Alternate slide direction
+                gsap.fromTo(row,
+                    { 
+                        x: fromRight ? 150 : -150, 
+                        opacity: 0 
+                    },
+                    {
+                        x: 0,
+                        opacity: 1,
+                        ease: "power1.out",
+                        scrollTrigger: {
+                            trigger: row,
+                            start: "top 85%",
+                            end: "top 45%",
+                            scrub: 1
+                        }
+                    }
+                );
+            });
+        }, containerRef);
+        return () => ctx.revert();
+    }, []);
+
     const services = [
         {
             id: "ai-agents",
             title: "AI Agent Development",
-            badge: "Most Requested",
-            icon: <Bot className="w-8 h-8 text-secondary" />,
-            description: "We build intelligent agents that handle conversations, qualify leads, answer questions, and manage scheduling — all without human intervention. Your AI agents work 24/7, never take a sick day, and get smarter over time.",
-            includes: [
-                "Customer-facing chatbots that actually help",
-                "Lead qualification and routing agents",
-                "Knowledge base assistants trained on your docs",
-                "Scheduling agents integrated with your calendar",
-                "Data extraction and processing bots"
-            ]
+            colorKey: "fb-blue",
+            icon: <Bot className="w-7 h-7 text-fb-blue drop-shadow-[0_0_10px_rgba(24,119,242,0.8)]" />,
+            description: "We build intelligent agents that handle conversations, qualify leads, answer questions, and manage scheduling — entirely autonomously without human bottlenecks.",
         },
         {
             id: "workflow-automation",
             title: "Workflow Automation",
-            badge: "Highest Time Savings",
-            icon: <GitBranch className="w-8 h-8 text-accent" />,
-            description: "Stop copying data between apps. Stop manually sending follow-ups. Stop chasing invoices. We connect your tools into automated pipelines that run themselves.",
-            includes: [
-                "CRM pipeline automation and lead nurturing",
-                "Automated reporting and analytics dashboards",
-                "Invoice processing and payment tracking",
-                "Employee and client onboarding workflows",
-                "Social media scheduling and content pipelines"
-            ]
+            colorKey: "tt-cyan",
+            icon: <GitBranch className="w-7 h-7 text-tt-cyan drop-shadow-[0_0_10px_rgba(45,212,191,0.8)]" />,
+            description: "Stop copying data between apps. Stop manually sending follow-ups. We connect your tools into hyper-efficient pipelines that systematically run themselves.",
         },
         {
             id: "custom-tools",
-            title: "Custom Internal Tools",
-            badge: "Complete Control",
-            icon: <LayoutPanelLeft className="w-8 h-8 text-secondary" />,
-            description: "Off-the-shelf software never quite fits. We build tools shaped around your process — admin dashboards, client portals, and management systems that work the way your team actually works.",
-            includes: [
-                "Admin dashboards with real-time data",
-                "Client-facing portals and self-service tools",
-                "Inventory and resource management systems",
-                "Project tracking and team coordination tools",
-                "Data visualization and business intelligence"
-            ]
+            title: "Internal Systems",
+            colorKey: "ig-magenta",
+            icon: <LayoutPanelLeft className="w-7 h-7 text-ig-magenta drop-shadow-[0_0_10px_rgba(236,72,153,0.8)]" />,
+            description: "Off-the-shelf software never fits perfectly. We architect bespoke admin dashboards, client portals, and dynamic resource management arrays.",
         },
         {
             id: "consulting",
             title: "Operations Consulting",
-            badge: "Great Starting Point",
-            icon: <LineChart className="w-8 h-8 text-accent" />,
-            description: "Not sure where to start? We audit your current operations, map out your bottlenecks, and create a prioritized automation roadmap — so every dollar you invest delivers measurable ROI.",
-            includes: [
-                "End-to-end process audits",
-                "Custom automation roadmaps with ROI projections",
-                "Tech stack evaluation and recommendations",
-                "Team training and AI readiness workshops"
-            ]
+            colorKey: "wa-green",
+            icon: <LineChart className="w-7 h-7 text-wa-green drop-shadow-[0_0_10px_rgba(37,211,102,0.8)]" />,
+            description: "Not sure where to start? We dynamically map your bottlenecks and generate a zero-fluff blueprint mapping direct, measurable automation ROI.",
         }
     ];
 
     return (
-        <div className="w-full bg-background min-h-screen pt-32 pb-40 px-6 md:px-12">
-            <div className="max-w-7xl mx-auto">
+        <div ref={containerRef} className="w-full bg-[#0a0a0f] min-h-screen pt-40 pb-40 overflow-hidden font-sans text-white">
+            
+            {/* Cinematic Header */}
+            <div className="max-w-5xl mx-auto px-6 md:px-12 text-center mb-40 relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-1000">
 
-                {/* Header */}
-                <div className="text-center max-w-3xl mx-auto mb-32">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8">
-                        <Zap size={14} className="text-accent" />
-                        <span className="text-xs font-mono tracking-wide text-text/80 uppercase">What We Do</span>
-                    </div>
-                    <h1 className="font-sans font-bold text-5xl md:text-7xl tracking-tighter mb-8 leading-tight">
-                        Automation That Actually <span className="font-serif italic text-white/50 text-6xl md:text-8xl block mt-2">Works for You.</span>
-                    </h1>
-                    <p className="text-xl text-text/60 leading-relaxed font-light">
-                        Four core services, one goal: eliminate the repetitive work that keeps your team from doing what they do best.
-                    </p>
-                </div>
+                <h1 className="font-serif italic text-6xl md:text-8xl lg:text-[7.5rem] leading-none mb-8 tracking-tighter drop-shadow-2xl">
+                    Engineered to <span className="font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 not-italic">Scale.</span>
+                </h1>
+                <p className="text-xl md:text-2xl text-text/50 font-light max-w-2xl mx-auto leading-relaxed">
+                    Four core infrastructure pillars designed to completely eradicate manual, repetitive data labor from your operational overhead.
+                </p>
+            </div>
 
-                {/* Alternating Services */}
-                <div className="space-y-32 mb-40">
-                    {services.map((svc, index) => {
-                        const isEven = index % 2 === 0;
-                        return (
-                            <div key={svc.id} className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-16 lg:gap-24 group`}>
-
-                                {/* Text Side */}
-                                <div className="flex-1 w-full relative z-10">
-                                    <div className="mb-6 flex items-center gap-4">
-                                        <div className="w-16 h-16 rounded-3xl bg-surface border border-white/10 flex items-center justify-center shadow-2xl shadow-secondary/20">
-                                            {svc.icon}
-                                        </div>
-                                        {svc.badge && (
-                                            <span className="text-xs font-mono px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 text-secondary font-bold">
-                                                {svc.badge}
-                                            </span>
-                                        )}
-                                    </div>
-
-                                    <h2 className="text-4xl md:text-5xl font-sans font-bold tracking-tighter mb-6 group-hover:text-secondary transition-colors duration-500">{svc.title}</h2>
-                                    <p className="text-lg text-text/70 leading-relaxed mb-8">{svc.description}</p>
+            {/* Alternating Services Rows using Home.jsx layout logic */}
+            <div className="flex flex-col gap-24 lg:gap-32 w-full max-w-7xl mx-auto px-6 md:px-12 mb-40">
+                {services.map((svc, index) => {
+                    const isEven = index % 2 === 0;
+                    return (
+                        <div key={svc.id} className="feature-row-animate grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+                            
+                            {/* Text Block */}
+                            <div className={`flex flex-col justify-center h-full min-h-[350px] ${!isEven ? 'lg:order-2' : ''}`}>
+                                <div className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/10 shadow-lg">
+                                    {svc.icon}
                                 </div>
-
-                                {/* Glass Card List Side */}
-                                <div className="flex-1 w-full relative">
-                                    <div className={`absolute inset-0 bg-gradient-to-r ${isEven ? 'from-secondary/20 to-transparent' : 'from-transparent to-secondary/20'} opacity-20 blur-[100px] rounded-full group-hover:opacity-50 transition-opacity duration-1000`}></div>
-                                    <div className="glass-card rounded-[3rem] p-10 md:p-14 relative z-10 transform transition-transform duration-700 hover:scale-[1.02] border-white/10 bg-surface/80">
-                                        <h3 className="font-mono text-sm tracking-widest uppercase mb-8 opacity-50 underline decoration-secondary decoration-2 underline-offset-8">What's Included</h3>
-                                        <ul className="space-y-5">
-                                            {svc.includes.map((item, i) => (
-                                                <li key={i} className="flex gap-4 items-start group/item">
-                                                    <CheckCircle2 size={20} className="text-accent mt-0.5 shrink-0 group-hover/item:scale-125 transition-transform" />
-                                                    <span className="text-text/90 font-medium leading-relaxed">{item}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
+                                <h3 className={`font-sans text-4xl md:text-6xl font-black mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white ${colorMap[svc.colorKey].to}`}>
+                                    {svc.title}
+                                </h3>
+                                <p className="text-text/70 text-lg md:text-2xl leading-relaxed font-light">{svc.description}</p>
+                                
+                                <div className="mt-10 flex flex-col gap-4 border-l border-white/10 pl-6 py-2">
+                                    <div className="flex items-center gap-3">
+                                        <div className={`w-1.5 h-1.5 rounded-full ${colorMap[svc.colorKey].bg} opacity-80 shadow-[0_0_8px_currentColor]`}></div>
+                                        <span className="text-sm font-mono text-text/60 uppercase tracking-wider">Full Data Integration</span>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <div className={`w-1.5 h-1.5 rounded-full ${colorMap[svc.colorKey].bg} opacity-80 shadow-[0_0_8px_currentColor]`}></div>
+                                        <span className="text-sm font-mono text-text/60 uppercase tracking-wider">Zero Maintenance Deployments</span>
                                     </div>
                                 </div>
-
                             </div>
-                        );
-                    })}
-                </div>
 
-                {/* Quick Win Products */}
-                <div className="pt-20 border-t border-white/10">
-                    <div className="text-center mb-16">
-                        <h2 className="font-sans text-4xl md:text-5xl font-bold tracking-tighter mb-4 text-white">Not Sure Where to Start?</h2>
-                        <p className="text-text/60">Quick-win solutions designed to deliver value immediately.</p>
-                    </div>
+                            {/* Media / Widget Placeholder */}
+                            <div className={`hidden lg:flex w-full items-center justify-center p-2 min-h-[400px] ${!isEven ? 'lg:order-1' : ''}`}>
+                                <MediaPlaceholder colorKey={svc.colorKey} />
+                            </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div className="glass-card hover:-translate-y-2 transition-transform duration-500 rounded-[2rem] p-8 flex flex-col items-start border border-white/5 hover:border-secondary/30 relative overflow-hidden group">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/10 rounded-full blur-[50px] group-hover:bg-secondary/20 transition-colors"></div>
-                            <span className="bg-white/10 px-3 py-1 rounded-full text-xs font-mono font-bold mb-6">Free</span>
-                            <h3 className="text-2xl font-bold font-sans mb-3">AI Readiness Assessment</h3>
-                            <p className="text-sm opacity-60 mb-8 leading-relaxed">A 30-minute call where we evaluate your current operations and identify the top 3 automation opportunities.</p>
-                            <Link to="/contact" className="mt-auto flex items-center gap-2 text-sm font-bold text-accent hover:text-white transition-colors">Book Now <ArrowRight size={16} /></Link>
                         </div>
+                    );
+                })}
+            </div>
 
-                        <div className="glass-card hover:-translate-y-2 transition-transform duration-500 rounded-[2rem] p-8 flex flex-col items-start border border-white/5 hover:border-accent/30 relative overflow-hidden group">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-[50px] group-hover:bg-accent/20 transition-colors"></div>
-                            <span className="bg-accent/10 text-accent border border-accent/20 px-3 py-1 rounded-full text-xs font-mono font-bold mb-6">$499</span>
-                            <h3 className="text-2xl font-bold font-sans mb-3">Automation Audit</h3>
-                            <p className="text-sm opacity-60 mb-8 leading-relaxed">A deep-dive analysis of your workflows, tools, and bottlenecks — delivered as a detailed report with ROI projections.</p>
-                            <Link to="/contact" className="mt-auto flex items-center gap-2 text-sm font-bold text-accent hover:text-white transition-colors">Start Audit <ArrowRight size={16} /></Link>
-                        </div>
-
-                        <div className="glass-card hover:-translate-y-2 transition-transform duration-500 rounded-[2rem] p-8 flex flex-col items-start border border-white/5 hover:border-secondary/30 relative overflow-hidden group">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/10 rounded-full blur-[50px] group-hover:bg-secondary/20 transition-colors"></div>
-                            <span className="bg-secondary/10 text-secondary border border-secondary/20 px-3 py-1 rounded-full text-xs font-mono font-bold mb-6">$999</span>
-                            <h3 className="text-2xl font-bold font-sans mb-3">Quick-Start Agent</h3>
-                            <p className="text-sm opacity-60 mb-8 leading-relaxed">A simple AI agent or automation delivered in one week. Perfect for testing the waters of our retainer service.</p>
-                            <Link to="/contact" className="mt-auto flex items-center gap-2 text-sm font-bold text-accent hover:text-white transition-colors">Build It <ArrowRight size={16} /></Link>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Bottom CTA */}
-                <div className="mt-40 text-center">
-                    <Link to="/contact" className="magnetic-button inline-flex px-10 py-5 rounded-full bg-accent text-primary font-sans font-bold text-lg glow-amber items-center gap-3">
-                        Let's Build Something Together
-                        <ArrowRight size={20} />
+            {/* Bottom Horizon Strip CTA */}
+            <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 mt-20">
+                <div className="w-full bg-[#050508] border border-white/5 rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden flex flex-col items-center shadow-2xl">
+                    <div className="absolute inset-0 bg-gradient-to-t from-fb-blue/5 to-transparent pointer-events-none"></div>
+                    <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-6 drop-shadow-xl">Ready to upgrade your stack?</h2>
+                    <p className="text-lg md:text-xl text-text/50 max-w-2xl mx-auto mb-12 font-light">
+                        Our architecture engine is standing by to quote your custom build directly on the homepage in under two minutes.
+                    </p>
+                    <Link to="/" className="px-10 py-5 rounded-full bg-white text-black font-sans font-bold text-sm tracking-widest uppercase hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.2)]">
+                        Launch Project Scoper
                     </Link>
                 </div>
-
             </div>
+
         </div>
     );
 }

@@ -42,7 +42,7 @@ export default function InternalToolsWidget() {
                 
                 <div className="flex items-center gap-2 mb-6 relative z-10">
                     <Bot size={16} className="text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
-                    <span className="text-[10px] font-bold text-white tracking-widest uppercase mb-0.5 leading-tight">Custom AI Agents Built For You</span>
+                    <span className="text-[10px] font-bold text-white tracking-widest uppercase mb-0.5 leading-tight">Custom AI Agents</span>
                 </div>
                 
                 {/* Mock AI Agent UI */}
@@ -79,7 +79,7 @@ export default function InternalToolsWidget() {
                 
                 <div className="flex items-center gap-2 mb-6 relative z-10">
                     <Server size={16} className="text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
-                    <span className="text-[10px] font-bold text-white tracking-widest uppercase mb-0.5 leading-tight">Smart Data & Custom CRM</span>
+                    <span className="text-[10px] font-bold text-white tracking-widest uppercase mb-0.5 leading-tight">Custom CRM & Smart Data</span>
                 </div>
                 
                 {/* Mock DB UI */}

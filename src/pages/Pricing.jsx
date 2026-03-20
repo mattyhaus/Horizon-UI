@@ -1,149 +1,125 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { CheckCircle2, Plus, Minus } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Minus, Plus, Zap } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ProjectScopingChat from '../components/ProjectScopingChat';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const FaqItem = ({ question, answer }) => {
     const [isOpen, setIsOpen] = useState(false);
     return (
-        <div className="border-b border-white/10 py-6 last:border-0">
+        <div className="border-b border-white/5 py-8 last:border-0 group">
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full flex items-center justify-between text-left focus:outline-none group"
+                className="w-full flex items-center justify-between text-left focus:outline-none"
             >
-                <h4 className="font-sans font-bold text-lg group-hover:text-secondary transition-colors pr-8">{question}</h4>
-                <div className="flex-shrink-0 text-text/50 group-hover:text-secondary transition-colors">
-                    {isOpen ? <Minus size={20} /> : <Plus size={20} />}
+                <h4 className="font-sans font-black text-xl md:text-2xl text-white/70 group-hover:text-amber-500 transition-colors duration-500 tracking-tight pr-8">{question}</h4>
+                <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-500 ${isOpen ? 'bg-amber-500/10 border-amber-500/30 text-amber-500 shadow-[0_0_15px_rgba(245,158,11,0.2)]' : 'bg-white/5 border-white/10 text-white/50 group-hover:border-amber-500/20 group-hover:text-amber-500'}`}>
+                    {isOpen ? <Minus size={18} /> : <Plus size={18} />}
                 </div>
             </button>
             <div
-                className={`overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${isOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'
-                    }`}
+                className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${isOpen ? 'max-h-96 opacity-100 mt-6' : 'max-h-0 opacity-0'}`}
             >
-                <p className="text-text/60 leading-relaxed font-body">{answer}</p>
+                <p className="text-text/50 leading-relaxed font-light text-lg md:text-xl pr-12">{answer}</p>
             </div>
         </div>
     );
 };
 
 export default function Pricing() {
+    const containerRef = useRef(null);
+
     const faqs = [
         {
-            q: "What counts as a project?",
-            a: "A project is a self-contained automation deliverable — e.g., building a chatbot, automating an invoicing workflow, or creating an internal dashboard. Smaller tasks like tweaks and bug fixes don't count against your limit."
+            q: "What constitutes a 'custom sprint'?",
+            a: "A sprint is a rigorously scoped timeline—usually 2 to 4 weeks—where we architect, stress-test, and deploy a specific autonomous system or data pipeline directly into your infrastructure."
         },
         {
-            q: "Can I change tiers?",
-            a: "Absolutely. Upgrade or downgrade at any time. Changes take effect at the start of your next billing cycle. We want to be a flexible partner as your needs evolve."
+            q: "Are the scoping engine estimates guaranteed?",
+            a: "Our engine analyzes historical build data to provide a highly accurate initial bracket. The final quote is firmly locked in during our 30-minute technical discovery protocol."
         },
         {
-            q: "What's the onboarding process?",
-            a: "We start with a 60-minute kickoff call to map out workflows. Within the first two weeks, we deliver your first active automation project to prove immediate value."
+            q: "Do you charge licensing fees for the AI agents?",
+            a: "No. You strictly own the infrastructure. You pay standard API usage costs (OpenAI, Anthropic, etc.) at cost, completely cutting out the middle-man markups traditional SaaS companies charge."
         },
         {
-            q: "Do you work with businesses outside Auburn?",
-            a: "Yes. While we love our local Auburn/Opelika businesses, we work with clients across the U.S. via Slack, video calls, and shared dashboards."
-        },
-        {
-            q: "What if I need something not listed?",
-            a: "Book a discovery call. We'll tell you honestly whether we can help. If we can't, we'll try to point you to someone who can."
-        },
-        {
-            q: "How quickly can you start?",
-            a: "Most clients are onboarded within one week. First deliverable within 2 weeks."
+            q: "How fast can we deploy?",
+            a: "Initial architecture mapping takes less than 24 hours. Full technical onboarding takes 1 week. First production-ready agent deployment generally occurs by week 3."
         }
     ];
 
-    return (
-        <div className="w-full bg-background min-h-screen pt-32 pb-40">
+    useEffect(() => {
+        let ctx = gsap.context(() => {
+            gsap.from(".hero-slide", {
+                y: 50,
+                opacity: 0,
+                duration: 1.2,
+                stagger: 0.15,
+                ease: "power3.out",
+                delay: 0.1
+            });
+            
+            gsap.from(".faq-block", {
+                y: 50,
+                opacity: 0,
+                duration: 1.2,
+                scrollTrigger: {
+                    trigger: ".faq-block",
+                    start: "top 80%"
+                }
+            });
+        }, containerRef);
+        return () => ctx.revert();
+    }, []);
 
-            {/* Header */}
-            <div className="text-center max-w-3xl mx-auto px-6 mb-24 relative z-20">
-                <span className="text-xs font-mono px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8 inline-block tracking-wide uppercase text-accent">Pricing</span>
-                <h1 className="font-sans font-bold text-5xl md:text-7xl tracking-tighter mb-8 leading-tight">
-                    Simple, Predictable <span className="font-serif italic text-white/50">Pricing.</span>
+    return (
+        <div ref={containerRef} className="w-full bg-[#050508] min-h-screen pt-40 pb-40 overflow-hidden font-sans text-white">
+            
+            {/* Cinematic Header Layer */}
+            <div className="max-w-4xl mx-auto px-6 md:px-12 text-center mb-10 relative z-10 flex flex-col items-center">
+
+                <h1 className="hero-slide font-serif italic text-6xl md:text-8xl lg:text-[7.5rem] leading-none mb-8 tracking-tighter drop-shadow-2xl flex flex-wrap justify-center gap-x-4 gap-y-2">
+                    <span className="text-white/90">Scope</span>
+                    <span className="font-black text-amber-500 tracking-tight relative drop-shadow-[0_0_30px_rgba(245,158,11,0.4)]">
+                        <span className="relative z-10 not-italic">Dynamically.</span>
+                        <span className="absolute bottom-2 left-0 w-full h-4 bg-amber-500/40 -z-10 rotate-1 blur-[1px]"></span>
+                    </span>
                 </h1>
-                <p className="text-xl text-text/60 leading-relaxed font-light">
-                    No hourly billing. No surprise invoices. Just a monthly retainer and a team that keeps your automation running and improving.
+                <p className="hero-slide text-xl md:text-2xl text-text/50 font-light max-w-2xl mx-auto leading-relaxed">
+                    Bypass the bloated sales calls. Feed our engine your architecture requirements and get an instant capital estimate right now.
                 </p>
             </div>
 
-            {/* Pricing Grid (Re-used architecture from Home) */}
-            <section className="px-6 md:px-12 relative z-40 mb-40">
-                <div className="max-w-7xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-
-                        {/* Starter */}
-                        <div className="glass-card rounded-[2.5rem] p-10 transform md:scale-95 text-center flex flex-col h-[520px]">
-                            <h3 className="font-mono text-sm tracking-widest uppercase mb-4 opacity-70">Starter</h3>
-                            <div className="text-4xl font-sans font-bold mb-4">$1,500<span className="text-lg font-normal opacity-50">/mo</span></div>
-                            <p className="text-sm opacity-60 mb-8 leading-relaxed mb-auto">Perfect for businesses ready to dip their toes into automation with a focused monthly project.</p>
-
-                            <ul className="text-sm text-left opacity-80 space-y-4 mb-8">
-                                <li className="flex gap-3"><CheckCircle2 size={16} className="text-secondary shrink-0" /> 1 automation project/month</li>
-                                <li className="flex gap-3"><CheckCircle2 size={16} className="text-secondary shrink-0" /> Basic email and chat support</li>
-                                <li className="flex gap-3"><CheckCircle2 size={16} className="text-secondary shrink-0" /> Monthly check-in call</li>
-                                <li className="flex gap-3"><CheckCircle2 size={16} className="text-secondary shrink-0" /> Standard turnaround time</li>
-                                <li className="flex gap-3"><CheckCircle2 size={16} className="text-secondary shrink-0" /> Access to Horizon portal</li>
-                            </ul>
-                            <Link to="/contact" className="w-full py-4 rounded-full border border-white/20 hover:bg-white/5 transition-colors font-bold font-sans">Get Started</Link>
-                        </div>
-
-                        {/* Growth */}
-                        <div className="bg-secondary/10 border-2 border-secondary/30 backdrop-blur-xl rounded-[3rem] p-12 relative shadow-[0_0_50px_-12px_rgba(99,102,241,0.25)] flex flex-col h-[600px] z-10 transform scale-100 hover:scale-[1.02] transition-transform duration-500">
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent text-primary px-4 py-1.5 rounded-full text-xs font-bold font-sans tracking-wide">
-                                Most Popular
-                            </div>
-                            <h3 className="font-mono text-sm tracking-widest uppercase mb-4 text-secondary font-bold text-center">Growth</h3>
-                            <div className="text-5xl font-sans font-black mb-4 text-transparent bg-clip-text bg-gradient-to-br from-white to-secondary text-center">$3,000<span className="text-lg font-normal text-white/50">/mo</span></div>
-                            <p className="text-sm text-text/70 mb-8 leading-relaxed mb-auto text-center">For businesses serious about scaling. Multiple projects, priority support, and weekly optimization.</p>
-
-                            <ul className="text-sm text-left text-text/90 space-y-4 mb-8 bg-surface/50 p-6 rounded-3xl">
-                                <li className="flex gap-3 font-medium"><CheckCircle2 size={18} className="text-accent shrink-0" /> 2–3 automation projects/month</li>
-                                <li className="flex gap-3"><CheckCircle2 size={16} className="text-secondary shrink-0" /> Priority support, fast response</li>
-                                <li className="flex gap-3"><CheckCircle2 size={16} className="text-secondary shrink-0" /> Weekly optimization calls</li>
-                                <li className="flex gap-3"><CheckCircle2 size={16} className="text-secondary shrink-0" /> Dedicated Slack channel</li>
-                                <li className="flex gap-3"><CheckCircle2 size={16} className="text-secondary shrink-0" /> Workflow monitoring and alerts</li>
-                            </ul>
-                            <Link to="/contact" className="w-full py-4 rounded-full bg-accent text-primary font-bold font-sans tracking-wide text-center glow-amber hover:scale-105 transition-transform">Start Growing</Link>
-                        </div>
-
-                        {/* Partner */}
-                        <div className="glass-card rounded-[2.5rem] p-10 transform md:scale-95 text-center flex flex-col h-[520px]">
-                            <h3 className="font-mono text-sm tracking-widest uppercase mb-4 opacity-70">Partner</h3>
-                            <div className="text-4xl font-sans font-bold mb-4">$5,000+<span className="text-lg font-normal opacity-50">/mo</span></div>
-                            <p className="text-sm opacity-60 mb-8 leading-relaxed mb-auto">An embedded automation partner for your team. Unlimited scope, SLA guarantees, and deep integration.</p>
-
-                            <ul className="text-sm text-left opacity-80 space-y-4 mb-8">
-                                <li className="flex gap-3"><CheckCircle2 size={16} className="text-secondary shrink-0" /> Unlimited project scope</li>
-                                <li className="flex gap-3"><CheckCircle2 size={16} className="text-secondary shrink-0" /> Embedded team member feel</li>
-                                <li className="flex gap-3"><CheckCircle2 size={16} className="text-secondary shrink-0" /> SLA-backed response times</li>
-                                <li className="flex gap-3"><CheckCircle2 size={16} className="text-secondary shrink-0" /> Custom integrations & APIs</li>
-                                <li className="flex gap-3"><CheckCircle2 size={16} className="text-secondary shrink-0" /> Proactive monitoring</li>
-                            </ul>
-                            <Link to="/contact" className="w-full py-4 rounded-full border border-white/20 hover:bg-white/5 transition-colors font-bold font-sans">Become a Partner</Link>
-                        </div>
-
+            {/* The Scoper Widget Area */}
+            <section className="hero-slide relative z-40 w-full mb-40">
+                <div className="max-w-7xl mx-auto w-full px-4 md:px-12">
+                    <div className="bg-white/[0.01] backdrop-blur-3xl border border-white/5 shadow-2xl rounded-[3rem] p-6 md:p-12 relative overflow-hidden group">
+                        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
+                        <ProjectScopingChat />
                     </div>
                 </div>
             </section>
 
-            {/* FAQ */}
-            <section className="px-6 md:px-12 max-w-3xl mx-auto">
-                <h2 className="font-sans text-3xl md:text-4xl font-bold tracking-tighter mb-10 text-center">Frequently Asked Questions</h2>
-                <div className="glass-card rounded-[2rem] p-8 md:p-12 border-white/5">
-                    {faqs.map((faq, idx) => (
-                        <FaqItem key={idx} question={faq.q} answer={faq.a} />
-                    ))}
+            {/* Premium FAQ Layout */}
+            <section className="faq-block px-6 md:px-12 max-w-4xl mx-auto relative z-20">
+                <div className="flex flex-col items-center text-center mb-16">
+                    <Zap size={28} className="text-white/20 mb-6 drop-shadow-md" />
+                    <h2 className="font-sans text-4xl md:text-6xl font-black tracking-tighter text-white/90">Operational FAQ</h2>
+                </div>
+                
+                <div className="bg-white/[0.02] border border-white/5 rounded-[3rem] p-8 md:p-16 shadow-2xl backdrop-blur-sm relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-500/20 to-transparent"></div>
+                    <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
+                    
+                    <div className="relative z-10">
+                        {faqs.map((faq, idx) => (
+                            <FaqItem key={idx} question={faq.q} answer={faq.a} />
+                        ))}
+                    </div>
                 </div>
             </section>
-
-            {/* Bottom CTA */}
-            <div className="mt-32 text-center">
-                <p className="text-lg text-text/60 mb-6">Still Have Questions?</p>
-                <Link to="/contact" className="magnetic-button inline-flex px-8 py-4 rounded-full bg-white/10 text-text font-sans font-bold hover:bg-white/20 transition-colors">
-                    Book a Free Discovery Call
-                </Link>
-            </div>
 
         </div>
     );

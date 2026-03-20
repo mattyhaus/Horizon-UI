@@ -9,7 +9,7 @@ export default function ProjectScopingChat() {
     const messagesEndRef = useRef(null);
 
     const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
     };
 
     useEffect(() => {
@@ -48,9 +48,9 @@ export default function ProjectScopingChat() {
                 </p>
             </div>
 
-            {/* Chat Area - dynamically pushes the page down as it fills */}
+            {/* Chat Area - scrollable window so the page doesn't yank down */}
             {messages.length > 0 && (
-                <div className="flex flex-col gap-8 w-full px-2 lg:px-0 mb-8 pt-4">
+                <div className="flex flex-col gap-8 w-full px-2 lg:px-4 mb-8 pt-4 max-h-[55vh] overflow-y-auto" style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,255,255,0.2) transparent' }}>
                     {messages.map((msg, idx) => (
                         <div key={idx} className={`w-full flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} animate-in fade-in slide-in-from-bottom-4 duration-500`}>
                             <div className={`flex flex-col gap-4 ${msg.role === 'user' ? 'max-w-[85%] sm:max-w-[75%]' : 'w-full'}`}>
