@@ -68,7 +68,7 @@ export default function About() {
             {/* Cinematic Header Layer */}
             <div className="max-w-4xl mx-auto px-6 md:px-12 text-center mb-20 lg:mb-40 relative z-20 flex flex-col items-center">
 
-                <h1 className="font-serif italic text-5xl md:text-7xl lg:text-8xl lg:text-[7.5rem] leading-[1.1] mb-8 tracking-tighter drop-shadow-2xl flex flex-wrap justify-center gap-x-3 gap-y-2">
+                <h1 className="font-serif italic text-3xl sm:text-4xl md:text-7xl lg:text-[7.5rem] leading-[1.1] mb-8 tracking-tighter drop-shadow-2xl flex flex-wrap justify-center gap-x-3 gap-y-2">
                     {"Rebuilding the".split(" ").map((word, i) => (
                         <span key={i} className="hero-word inline-block text-white/90 drop-shadow-lg">{word}</span>
                     ))}
@@ -86,15 +86,15 @@ export default function About() {
             <section ref={storyRef} className="max-w-5xl mx-auto px-6 md:px-12 mb-20 lg:mb-40 relative z-20">
                 <h2 className="font-mono text-xs uppercase tracking-widest text-white/30 mb-8 block text-center">The Manifesto</h2>
                 <div className="text-center max-w-4xl mx-auto">
-                    <p className="font-sans font-light text-3xl md:text-5xl lg:text-5xl leading-[1.4] tracking-tight flex flex-wrap justify-center gap-x-3 gap-y-2">
+                    <p className="font-sans font-light text-2xl sm:text-3xl md:text-5xl leading-[1.4] tracking-tight flex flex-wrap justify-center gap-x-3 gap-y-2">
                         {manifestoText.split(" ").map((word, i) => (
                             <span key={i} className="manifesto-word inline-block text-white/80">{word}</span>
                         ))}
                     </p>
-                    <div className="mt-20 w-full h-[60dvh] rounded-[3rem] bg-[#0a0505] border border-red-500/20 relative overflow-hidden group shadow-[0_0_50px_rgba(239,68,68,0.05)]">
+                    <div className="mt-20 w-full h-[40dvh] md:h-[60dvh] rounded-[2rem] md:rounded-[3rem] bg-[#0a0505] border border-red-500/20 relative overflow-hidden group shadow-[0_0_50px_rgba(239,68,68,0.05)]">
                         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542044896582-841f3e79bc20?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center opacity-20 grayscale mix-blend-overlay group-hover:scale-105 transition-transform duration-[20s]"></div>
                         <div className="absolute inset-0 bg-gradient-to-t from-[#030305] to-transparent"></div>
-                        <div className="absolute bottom-12 left-12 right-12 flex justify-between items-end border-t border-red-500/20 pt-6">
+                        <div className="absolute bottom-6 left-6 right-6 md:bottom-12 md:left-12 md:right-12 flex justify-between items-end border-t border-red-500/20 pt-6">
                             <span className="font-mono text-[10px] tracking-widest uppercase text-red-500/80">Corporate Hub</span>
                             <span className="font-serif italic text-2xl text-white/70">Auburn, Alabama</span>
                         </div>
@@ -104,17 +104,17 @@ export default function About() {
 
             {/* What Makes Us Different */}
             <section className="px-6 md:px-12 max-w-6xl mx-auto mb-20 lg:mb-40 relative z-20">
-                <div className="text-center mb-24">
-                    <h2 className="font-sans text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white">Operational Ethos</h2>
+                <div className="text-center mb-12 md:mb-24">
+                    <h2 className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white">Operational Ethos</h2>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                     {differentiators.map((diff, i) => (
-                        <div key={i} className="bg-white/[0.02] border border-white/5 rounded-[3rem] p-12 hover:-translate-y-2 transition-transform duration-500 hover:border-white/20 group relative overflow-hidden shadow-2xl">
+                        <div key={i} className="bg-white/[0.02] border border-white/5 rounded-[3rem] p-6 sm:p-8 md:p-12 hover:-translate-y-2 transition-transform duration-500 hover:border-white/20 group relative overflow-hidden shadow-2xl">
                             <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 group-hover:bg-white/10 transition-colors duration-1000 pointer-events-none"></div>
                             <div className="text-white/30 mb-8 group-hover:text-white transition-colors duration-500">
                                 {diff.icon}
                             </div>
-                            <h3 className="text-3xl font-black font-sans mb-6 text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-white/40 transition-all duration-500 tracking-tight">{diff.title}</h3>
+                            <h3 className="text-2xl sm:text-3xl font-black font-sans mb-6 text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-white/40 transition-all duration-500 tracking-tight">{diff.title}</h3>
                             <p className="text-text/50 leading-relaxed text-lg font-light">{diff.desc}</p>
                         </div>
                     ))}
@@ -131,7 +131,7 @@ export default function About() {
                             <div className="absolute inset-0 bg-gradient-to-r from-[#030305] via-[#030305]/80 to-transparent"></div>
                             <div className="absolute inset-0 p-8 md:p-16 flex flex-col justify-center">
                                 <span className="text-[10px] font-mono uppercase text-white/40 font-bold mb-3 tracking-widest">{item.role}</span>
-                                <h3 className="text-4xl md:text-6xl font-black font-sans text-white group-hover:text-tt-cyan transition-colors duration-500 tracking-tighter drop-shadow-md">{item.name}</h3>
+                                <h3 className="text-3xl sm:text-4xl md:text-6xl font-black font-sans text-white group-hover:text-tt-cyan transition-colors duration-500 tracking-tighter drop-shadow-md">{item.name}</h3>
                             </div>
                             <div className="absolute right-12 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -translate-x-4 group-hover:translate-x-0">
                                 <ArrowRight size={32} className="text-white/50" />

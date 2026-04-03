@@ -37,7 +37,7 @@ export default function Navbar() {
                     }`}
             >
                 <div className="flex items-center justify-between">
-                    <Link to="/" className="text-4xl font-sans font-bold text-text tracking-tight z-50 relative group">
+                    <Link to="/" className="text-2xl md:text-3xl lg:text-4xl font-sans font-bold text-text tracking-tight z-50 relative group">
                         Horizon<span className="text-secondary ml-0.5 opacity-0 group-hover:opacity-100 transition-opacity">.</span>
                     </Link>
 
@@ -80,7 +80,7 @@ export default function Navbar() {
                 className={`fixed inset-0 z-30 bg-background/95 backdrop-blur-2xl transition-opacity duration-300 md:hidden flex flex-col items-center justify-center ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
                     }`}
             >
-                <ul className="flex flex-col items-center gap-8 text-2xl font-serif italic text-text/80">
+                <ul className="flex flex-col items-center gap-5 sm:gap-8 text-xl sm:text-2xl font-serif italic text-text/80">
                     {links.map((link) => (
                         <li key={link.name}>
                             <Link

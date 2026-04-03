@@ -289,8 +289,8 @@ export default function Home() {
                 {/* Content */}
                 <div ref={heroTextRef} className="relative z-20 max-w-4xl pt-32">
                     <h1 className="hero-element font-sans font-bold leading-none tracking-tighter mb-2">
-                        <span className="block text-4xl md:text-5xl lg:text-7xl mb-2">Stop Doing Manually</span>
-                        <span className="block font-serif italic text-5xl md:text-6xl lg:text-8xl w-full">
+                        <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-7xl mb-2">Stop Doing Manually</span>
+                        <span className="block font-serif italic text-4xl sm:text-5xl md:text-6xl lg:text-8xl w-full">
                             What AI <span className="text-gradient font-black">Can Do in Seconds.</span>
                         </span>
                     </h1>
@@ -312,13 +312,13 @@ export default function Home() {
             </section>
 
             {/* 2. FEATURES - "Interactive Functional Artifacts" */}
-            <section ref={featuresRef} className="py-32 px-6 md:px-12 max-w-7xl mx-auto relative z-20 bg-background">
-                <div className="flex flex-col gap-12 lg:gap-12 lg:gap-24 w-full">
+            <section ref={featuresRef} className="py-16 md:py-32 px-6 md:px-12 max-w-7xl mx-auto relative z-20 bg-background">
+                <div className="flex flex-col gap-12 lg:gap-24 w-full">
                     {/* Row 1 */}
                     <div className="feature-row-animate grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
                         {/* Headers 1: GTM & Venture Exploration */}
-                        <div className="flex flex-col justify-center h-full min-h-[350px]">
-                            <h3 className="font-sans text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white to-fb-blue">GTM & Venture Exploration</h3>
+                        <div className="flex flex-col justify-center h-full min-h-0 lg:min-h-[350px]">
+                            <h3 className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white to-fb-blue">GTM & Venture Exploration</h3>
                             <p className="text-text/70 text-lg md:text-2xl leading-relaxed">We analyze markets, map out go-to-market strategies, and build comprehensive lead databases to validate and launch your new ventures.</p>
                         </div>
                         {/* Interactive Lead Database Widget */}
@@ -334,8 +334,8 @@ export default function Home() {
                             <InteractiveGraphWidget />
                         </div>
                         {/* Headers 2: Content & Marketing */}
-                        <div className="flex flex-col justify-center h-full min-h-[350px] order-1 lg:order-2">
-                            <h3 className="font-sans text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white to-ig-magenta">Content & Marketing</h3>
+                        <div className="flex flex-col justify-center h-full min-h-0 lg:min-h-[350px] order-1 lg:order-2">
+                            <h3 className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white to-ig-magenta">Content & Marketing</h3>
                             <p className="text-text/70 text-lg md:text-2xl leading-relaxed">From automated content creation engines to targeted marketing workflows, we build the systems that put your brand in front of the right eyes.</p>
                         </div>
                     </div>
@@ -343,8 +343,8 @@ export default function Home() {
                     {/* Row 3 */}
                     <div className="feature-row-animate grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
                         {/* Headers 3: Tech & Internal Tools */}
-                        <div className="flex flex-col justify-center h-full min-h-[350px]">
-                            <h3 className="font-sans text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white to-wa-green">Tech & Internal Tools</h3>
+                        <div className="flex flex-col justify-center h-full min-h-0 lg:min-h-[350px]">
+                            <h3 className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white to-wa-green">Tech & Internal Tools</h3>
                             <p className="text-text/70 text-lg md:text-2xl leading-relaxed">We overhaul your technology stack, design bespoke CRMs, and develop internal business tools that perfectly align with your operations.</p>
                         </div>
                         {/* Internal Tools Columns */}
@@ -361,7 +361,7 @@ export default function Home() {
                 <div className="absolute inset-0 opacity-[0.05] bg-[url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-fixed"></div>
 
                 <div className="max-w-4xl mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center text-center justify-center">
-                    <h2 className="font-serif italic text-5xl md:text-7xl lg:text-[6rem] leading-tight flex flex-wrap justify-center gap-x-4 gap-y-2">
+                    <h2 className="font-serif italic text-3xl sm:text-4xl md:text-7xl lg:text-[6rem] leading-tight flex flex-wrap justify-center gap-x-4 gap-y-2">
                         {"Describe your project ".split(" ").map((word, i) => (
                             <span key={`word-${i}`} className="philosophy-word inline-block text-white/90 drop-shadow-md">{word}</span>
                         ))}

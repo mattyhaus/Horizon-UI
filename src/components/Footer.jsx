@@ -7,10 +7,10 @@ export default function Footer() {
             <div className="absolute inset-0 opacity-[0.02] mix-blend-overlay pointer-events-none bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop')] bg-cover"></div>
 
             <div className="max-w-7xl mx-auto relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
 
                     <div className="col-span-1 md:col-span-1">
-                        <Link to="/" className="text-3xl font-sans font-bold text-text mb-4 inline-block tracking-tighter">
+                        <Link to="/" className="text-2xl md:text-3xl font-sans font-bold text-text mb-4 inline-block tracking-tighter">
                             Horizon<span className="text-secondary">.</span>
                         </Link>
                         <p className="text-sm leading-relaxed mb-8 max-w-xs">

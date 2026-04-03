@@ -39,7 +39,7 @@ export default function ProjectScopingChat() {
     };
 
     return (
-        <div className="w-full max-w-4xl mx-auto flex flex-col font-sans relative py-12">
+        <div className="w-full max-w-4xl mx-auto flex flex-col font-sans relative py-6 md:py-12">
             
             {/* Dynamic Interactive Header */}
             <div className={`w-full flex flex-col items-center justify-center text-center px-4 transition-all duration-700 ${messages.length > 0 ? 'mb-6 scale-95 opacity-80' : 'mb-6 mt-2'}`}>
@@ -57,7 +57,7 @@ export default function ProjectScopingChat() {
                                 
                                 {/* Seamless bubbles */}
                                 {msg.role === 'assistant' ? (
-                                    <div className="text-2xl md:text-3xl font-light text-white/90 leading-snug border-l-4 border-fb-blue pl-6 md:pl-8 py-2 whitespace-pre-wrap">
+                                    <div className="text-lg sm:text-xl md:text-3xl font-light text-white/90 leading-snug border-l-4 border-fb-blue pl-6 md:pl-8 py-2 whitespace-pre-wrap">
                                         {msg.content}
                                     </div>
                                 ) : (
@@ -99,7 +99,7 @@ export default function ProjectScopingChat() {
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         placeholder="E.g. I need a Custom CRM that automatically texts inbound leads..."
-                        className="w-full bg-black/40 backdrop-blur-md border border-white/10 hover:border-white/20 rounded-2xl py-6 pl-6 pr-20 text-base lg:text-lg text-white placeholder-text/30 outline-none focus:border-fb-blue/50 focus:bg-white/5 focus:ring-1 focus:ring-fb-blue/50 transition-all shadow-inner"
+                        className="w-full bg-black/40 backdrop-blur-md border border-white/10 hover:border-white/20 rounded-2xl py-6 pl-6 pr-16 sm:pr-20 text-base lg:text-lg text-white placeholder-text/30 outline-none focus:border-fb-blue/50 focus:bg-white/5 focus:ring-1 focus:ring-fb-blue/50 transition-all shadow-inner"
                     />
                     <button 
                         type="submit"

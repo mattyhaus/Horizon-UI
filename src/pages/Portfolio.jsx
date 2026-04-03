@@ -96,9 +96,9 @@ export default function Portfolio() {
         <div ref={containerRef} className="w-full bg-[#050508] min-h-screen pt-24 lg:pt-40 pb-24 lg:pb-40 px-6 md:px-12 overflow-hidden font-sans text-white">
             
             {/* Cinematic Header */}
-            <div className="max-w-6xl mx-auto text-center mb-32 relative z-20 flex flex-col items-center">
+            <div className="max-w-6xl mx-auto text-center mb-16 md:mb-32 relative z-20 flex flex-col items-center">
 
-                <h1 className="font-serif italic text-5xl md:text-7xl lg:text-8xl lg:text-[8rem] tracking-tighter mb-8 leading-none flex flex-wrap justify-center gap-x-4">
+                <h1 className="font-serif italic text-3xl sm:text-4xl md:text-7xl lg:text-[8rem] tracking-tighter mb-8 leading-none flex flex-wrap justify-center gap-x-4">
                     {"Architectural ".split(" ").map((word, i) => (
                         <span key={i} className="hero-word inline-block drop-shadow-lg">{word}</span>
                     ))}
@@ -112,7 +112,7 @@ export default function Portfolio() {
             </div>
 
             {/* Aesthetic Filters */}
-            <div className="flex flex-wrap items-center justify-center gap-4 mb-32">
+            <div className="flex flex-wrap items-center justify-center gap-4 mb-16 md:mb-32">
                 {filters.map(filter => (
                     <button
                         key={filter}
@@ -133,10 +133,10 @@ export default function Portfolio() {
                 {filteredProjects.map((project, idx) => {
                     const isEven = idx % 2 === 0;
                     return (
-                        <div key={project.id} className={`gallery-panel flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-12 lg:gap-24 items-center group`}>
+                        <div key={project.id} className={`gallery-panel flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-24 items-center group`}>
                             
                             {/* Cinematic Image Frame */}
-                            <div className="w-full lg:w-[60%] h-[50dvh] lg:h-[70dvh] relative overflow-hidden rounded-[3rem] border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.8)]">
+                            <div className="w-full lg:w-[60%] h-[35dvh] sm:h-[45dvh] lg:h-[70dvh] relative overflow-hidden rounded-[3rem] border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.8)]">
                                 <div className="absolute inset-0 bg-black/20 z-10 group-hover:bg-transparent transition-colors duration-1000"></div>
                                 <div className="parallax-img w-full h-full">
                                     <img 
@@ -158,12 +158,12 @@ export default function Portfolio() {
                                     {project.category} // {project.client}
                                 </span>
                                 
-                                <h2 className="font-sans text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-8 leading-[1.1] text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-white/40 transition-all duration-700">
+                                <h2 className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-8 leading-[1.1] text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-white/40 transition-all duration-700">
                                     {project.title}
                                 </h2>
 
                                 <div className="border-l border-white/10 pl-6 mb-10">
-                                    <p className="font-serif italic text-2xl text-white/70 leading-relaxed mb-8">
+                                    <p className="font-serif italic text-xl sm:text-2xl text-white/70 leading-relaxed mb-8">
                                         "{project.outcome}"
                                     </p>
                                     
@@ -191,11 +191,11 @@ export default function Portfolio() {
 
             {/* Bottom CTA Block */}
             <div className="max-w-5xl mx-auto">
-                <div className="w-full bg-white/[0.02] backdrop-blur-xl border border-white/5 rounded-[4rem] p-16 md:p-24 text-center relative overflow-hidden group hover:border-white/10 transition-colors duration-700">
+                <div className="w-full bg-white/[0.02] backdrop-blur-xl border border-white/5 rounded-[2rem] sm:rounded-[3rem] md:rounded-[4rem] p-8 sm:p-12 md:p-24 text-center relative overflow-hidden group hover:border-white/10 transition-colors duration-700">
                     <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop')] bg-cover opacity-5 mix-blend-overlay group-hover:opacity-10 transition-opacity duration-1000"></div>
                     
                     <Sparkles size={40} className="text-white/30 mx-auto mb-10 group-hover:text-white transition-colors duration-700" />
-                    <h2 className="font-sans text-5xl md:text-7xl font-black tracking-tighter mb-8 relative z-10 text-white">Deploy Similar Architecture.</h2>
+                    <h2 className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter mb-8 relative z-10 text-white">Deploy Similar Architecture.</h2>
                     <p className="text-xl text-white/50 font-light mb-16 relative z-10 max-w-2xl mx-auto">We engineer identical robust infrastructure directly into your company's processes.</p>
                     
                     <Link to="/contact" className="inline-flex px-12 py-6 rounded-full bg-white text-black font-sans font-bold text-sm tracking-widest uppercase relative z-10 hover:scale-[1.03] active:scale-95 transition-transform duration-300 shadow-[0_0_40px_rgba(255,255,255,0.15)]">

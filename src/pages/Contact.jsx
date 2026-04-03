@@ -48,12 +48,12 @@ export default function Contact() {
             {/* Background Texture */}
             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542044896582-841f3e79bc20?q=80&w=2670&auto=format&fit=crop')] bg-cover opacity-[0.02] mix-blend-overlay pointer-events-none"></div>
 
-            <div className="max-w-7xl mx-auto relative z-10 flex flex-col lg:flex-row gap-16 lg:gap-12 lg:gap-24">
+            <div className="max-w-7xl mx-auto relative z-10 flex flex-col lg:flex-row gap-12 lg:gap-24">
 
                 {/* Left Column - Typography & Info */}
                 <div className="w-full lg:w-[45%] flex flex-col justify-center">
 
-                    <h1 className="font-serif italic text-5xl md:text-7xl lg:text-8xl tracking-tighter mb-8 leading-[1.1] flex flex-col">
+                    <h1 className="font-serif italic text-3xl sm:text-4xl md:text-7xl lg:text-8xl tracking-tighter mb-8 leading-[1.1] flex flex-col">
                         <span className="hero-word text-white/90">Let's Talk</span>
                         <span className="hero-word font-black text-transparent bg-clip-text bg-gradient-to-r from-ig-magenta to-fb-blue not-italic drop-shadow-xl self-start pb-2">Automation.</span>
                     </h1>
@@ -113,7 +113,7 @@ export default function Contact() {
 
                 {/* Right Column - Massive Form / Calendar Portal */}
                 <div className="w-full lg:w-[55%] relative">
-                    <div className="slide-up-form bg-[#0a0508] border border-white/5 rounded-[3rem] p-10 md:p-14 shadow-2xl relative overflow-hidden backdrop-blur-3xl group h-full flex flex-col hover:border-white/10 transition-colors duration-700">
+                    <div className="slide-up-form bg-[#0a0508] border border-white/5 rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-8 md:p-14 shadow-2xl relative overflow-hidden backdrop-blur-3xl group h-full flex flex-col hover:border-white/10 transition-colors duration-700">
                         <div className="absolute top-0 right-0 w-96 h-96 bg-ig-magenta/5 rounded-full blur-[100px] pointer-events-none group-hover:bg-ig-magenta/10 transition-colors duration-1000"></div>
 
                         {/* Embed Placeholder */}

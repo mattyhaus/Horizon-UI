@@ -80,7 +80,7 @@ export default function Pricing() {
             {/* Cinematic Header Layer */}
             <div className="max-w-4xl mx-auto px-6 md:px-12 text-center mb-10 relative z-10 flex flex-col items-center">
 
-                <h1 className="hero-slide font-serif italic text-5xl md:text-7xl lg:text-8xl lg:text-[7.5rem] leading-none mb-8 tracking-tighter drop-shadow-2xl flex flex-wrap justify-center gap-x-4 gap-y-2">
+                <h1 className="hero-slide font-serif italic text-3xl sm:text-4xl md:text-7xl lg:text-[7.5rem] leading-none mb-8 tracking-tighter drop-shadow-2xl flex flex-wrap justify-center gap-x-4 gap-y-2">
                     <span className="text-white/90">Scope</span>
                     <span className="font-black text-amber-500 tracking-tight relative drop-shadow-[0_0_30px_rgba(245,158,11,0.4)]">
                         <span className="relative z-10 not-italic">Dynamically.</span>
@@ -106,7 +106,7 @@ export default function Pricing() {
             <section className="faq-block px-6 md:px-12 max-w-4xl mx-auto relative z-20">
                 <div className="flex flex-col items-center text-center mb-16">
                     <Zap size={28} className="text-white/20 mb-6 drop-shadow-md" />
-                    <h2 className="font-sans text-4xl md:text-6xl font-black tracking-tighter text-white/90">Operational FAQ</h2>
+                    <h2 className="font-sans text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter text-white/90">Operational FAQ</h2>
                 </div>
                 
                 <div className="bg-white/[0.02] border border-white/5 rounded-[3rem] p-8 md:p-16 shadow-2xl backdrop-blur-sm relative overflow-hidden">

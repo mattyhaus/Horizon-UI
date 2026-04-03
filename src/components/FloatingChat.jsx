@@ -10,7 +10,7 @@ export default function FloatingChat() {
             {/* Chat Panel */}
             <div
                 ref={containerRef}
-                className={`absolute bottom-16 right-0 w-80 mb-4 transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] origin-bottom-right ${isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'
+                className={`absolute bottom-16 right-0 w-[calc(100vw-3rem)] sm:w-80 mb-4 transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] origin-bottom-right ${isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0 pointer-events-none'
                     }`}
             >
                 <div className="glass-card rounded-2xl overflow-hidden shadow-2xl border border-white/10">
